@@ -27,7 +27,7 @@ public class Person {
     private User user;
 
     @OneToMany(mappedBy = "person")
-    private List<Advertisement> tasks = new ArrayList<>();
+    private List<Advertisement> advertisements = new ArrayList<>();
 
     public Person(String name) {
         this.name = name;
