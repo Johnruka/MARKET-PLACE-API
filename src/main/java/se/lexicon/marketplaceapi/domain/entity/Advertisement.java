@@ -29,7 +29,12 @@ public class Advertisement {
 
     @Lob
     private List<String> attachments;
-    private LocalDateTime dateTime;
+
+    private LocalDateTime createDateTime;
+
+    private LocalDateTime expiryDateTime;
+
+
     private Integer type; // 1 registration, 2 reset password
     //Add more fields as needed
 
@@ -39,6 +44,6 @@ public class Advertisement {
 
     @PrePersist
     public void initialData() {
-        dateTime = LocalDateTime.now();
+        createDateTime = LocalDateTime.now();
     }
 }
