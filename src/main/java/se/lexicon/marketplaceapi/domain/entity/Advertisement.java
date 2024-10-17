@@ -45,5 +45,6 @@ public class Advertisement {
     @PrePersist
     public void initialData() {
         createDateTime = LocalDateTime.now();
+        expiryDateTime = createDateTime.plusDays(30);
     }
 }
