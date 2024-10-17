@@ -1,4 +1,11 @@
 package se.lexicon.marketplaceapi.Repository;
 
-public interface RoleRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import se.lexicon.marketplaceapi.domain.entity.Role;
+
+import java.util.Optional;
+
+public interface RoleRepository extends JpaRepository<Role, Long> {
+
+    Optional<Role> findByName(String name);
 }
