@@ -3,6 +3,7 @@ package se.lexicon.marketplaceapi.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -34,5 +35,22 @@ public class User {
         this.email = email;
     }
 
+    public void addRole(Role role) {
+        if (role == null) throw new IllegalArgumentException("Role cannot be null");
+        if (roles == null) roles = new HashSet<>();
+        roles.add(role);
+    }
+
+    public void removeRole(Role role) {
+        if (role == null) throw new IllegalArgumentException("Role cannot be null");
+        if (roles != null) {
+            roles.remove(role);
+        } else {
+
+        }
+    }
+
 }
+
+
 
