@@ -24,7 +24,7 @@ public class Advertisement {
     private String title;
 
     @Lob
-    @Column(length = 65000)
+    @Column(length = 8000)
     private String content;
 
     @Lob
