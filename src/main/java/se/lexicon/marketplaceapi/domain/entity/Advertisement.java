@@ -34,9 +34,7 @@ public class Advertisement {
 
     private LocalDateTime expiryDateTime;
 
-
-    private Integer type; // 1 registration, 2 reset password
-    //Add more fields as needed
+    private Integer type;
 
     @ManyToOne
     @JoinColumn(name = "person_id")
