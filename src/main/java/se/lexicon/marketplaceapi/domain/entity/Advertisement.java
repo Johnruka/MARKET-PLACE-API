@@ -33,6 +33,10 @@ public class Advertisement {
     private Integer type; // 1 registration, 2 reset password
     //Add more fields as needed
 
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+
     @PrePersist
     public void initialData() {
         dateTime = LocalDateTime.now();
