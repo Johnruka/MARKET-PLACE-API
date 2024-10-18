@@ -13,6 +13,7 @@ import se.lexicon.marketplaceapi.domain.entity.Advertisement;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AdvertisementServiceImpl implements AdvertisementService {
@@ -103,7 +104,18 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     }
 
     @Override
-    public List<AdvertisementDTOView> findAdvertisementsByPersonId(Long personId) {
-        return List.of();
+    public List<Object> findAdvertisementsByPersonId(Long personId) {
+        // Retrieving advertisements associated with a person by their ID
+        List<Advertisement> advertisementList = advertisementRepository.findByPerson_Id(personId);
+        return advertisementList.stream()
+                .map(this::convertToAdvertisementDTOView)
+                .collect(Collectors.toList());
     }
+
+    @Override
+    public Object convertToAdvertisementDTOView(Advertisement advertisement) {
+        return null ;
+    }
+
+
 }
