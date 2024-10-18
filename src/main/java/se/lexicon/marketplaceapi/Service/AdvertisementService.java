@@ -9,6 +9,8 @@ public interface AdvertisementService {
 
     AdvertisementDTOView create(AdvertisementDTOForm advertisementDTOForm);
 
+    AdvertisementDTOView findById(String advertisementId);
+
     AdvertisementDTOView findById(Long advertisementId);
 
     void update(AdvertisementDTOForm advertisementDTOForm);
