@@ -11,8 +11,6 @@ public interface AdvertisementService {
 
     AdvertisementDTOView findById(String advertisementId);
 
-    AdvertisementDTOView findById(Long advertisementId);
-
     void update(AdvertisementDTOForm advertisementDTOForm);
 
     void delete(String id);
