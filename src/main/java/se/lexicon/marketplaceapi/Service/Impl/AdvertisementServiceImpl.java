@@ -68,6 +68,16 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
     @Override
     public void update(AdvertisementDTOForm advertisementDTOForm) {
+      Advertisement existingAdvertisement = advertisementRepository.findById(String.valueOf(advertisementDTOForm.getId()))
+              .orElseThrow(() -> new DataNotFoundException("Advertisement not found"));
+
+      existingAdvertisement.setTitle(advertisementDTOForm.getTitle());
+      existingAdvertisement.setContent(advertisementDTOForm.getContent());
+      existingAdvertisement.setAttachments(advertisementDTOForm.getAttachments());
+      existingAdvertisement.setCreateDateTime(advertisementDTOForm.getCreateDateTime().atStartOfDay());
+      existingAdvertisement.setExpiryDateTime(advertisementDTOForm.getExpiryDateTime().atStartOfDay());
+
+      advertisementRepository.save(existingAdvertisement);
 
     }
 
