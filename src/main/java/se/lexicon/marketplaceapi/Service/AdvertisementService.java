@@ -2,6 +2,7 @@ package se.lexicon.marketplaceapi.Service;
 
 import se.lexicon.marketplaceapi.domain.dto.AdvertisementDTOForm;
 import se.lexicon.marketplaceapi.domain.dto.AdvertisementDTOView;
+import se.lexicon.marketplaceapi.domain.entity.Advertisement;
 
 import java.util.List;
 
@@ -15,5 +16,7 @@ public interface AdvertisementService {
 
     void delete(String id);
 
-    List<AdvertisementDTOView> findAdvertisementsByPersonId(Long personId);
+    List<Object> findAdvertisementsByPersonId(Long personId);
+
+    Object convertToAdvertisementDTOView(Advertisement advertisement);
 }
