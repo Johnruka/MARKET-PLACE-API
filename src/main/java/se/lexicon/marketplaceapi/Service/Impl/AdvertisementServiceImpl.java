@@ -28,6 +28,8 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
     @Override
     public AdvertisementDTOView create(AdvertisementDTOForm advertisementDTOForm) {
+
+        // Creating a new advertisement entity using the DTO
         Advertisement advertisement = Advertisement.builder()
                 .title(advertisementDTOForm.getTitle())
                 .content(advertisementDTOForm.getContent())
@@ -35,7 +37,11 @@ public class AdvertisementServiceImpl implements AdvertisementService {
                 .createDateTime(advertisementDTOForm.getCreateDateTime().atStartOfDay())
                 .expiryDateTime(advertisementDTOForm.getExpiryDateTime().atStartOfDay())
                 .build();
+
+        // Saving the created entity to the database
         Advertisement savedAdvertisement = advertisementRepository.save(advertisement);
+
+        // Converting the saved entity to a DTO
         PersonDTOView builtPersonView = PersonDTOView.builder()
                 .id(savedAdvertisement.getPerson().getId())
                 .name(savedAdvertisement.getPerson().getName())
@@ -52,9 +58,12 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
     @Override
     public AdvertisementDTOView findById(String advertisementId) {
+
+        // Retrieving a Task entity by its ID
         Advertisement advertisement = advertisementRepository.findById(advertisementId)
                 .orElseThrow(() -> new DataNotFoundException("Advertisement not found"));
 
+        // Converting the entity to a DTO
         return AdvertisementDTOView.builder()
                 .id(Long.valueOf(advertisement.getId()))
                 .title(advertisement.getTitle())
@@ -68,21 +77,28 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
     @Override
     public void update(AdvertisementDTOForm advertisementDTOForm) {
+
+        // checking if the advertisement exists
       Advertisement existingAdvertisement = advertisementRepository.findById(String.valueOf(advertisementDTOForm.getId()))
               .orElseThrow(() -> new DataNotFoundException("Advertisement not found"));
 
+        // Updating the existing entity using the DTO
       existingAdvertisement.setTitle(advertisementDTOForm.getTitle());
       existingAdvertisement.setContent(advertisementDTOForm.getContent());
       existingAdvertisement.setAttachments(advertisementDTOForm.getAttachments());
       existingAdvertisement.setCreateDateTime(advertisementDTOForm.getCreateDateTime().atStartOfDay());
       existingAdvertisement.setExpiryDateTime(advertisementDTOForm.getExpiryDateTime().atStartOfDay());
 
+        // Saving the updated entity to the database
       advertisementRepository.save(existingAdvertisement);
 
     }
 
     @Override
     public void delete(String id) {
+        if (id == null) throw new IllegalArgumentException("advertisement ID must not be null");
+        if (!advertisementRepository.existsById(id)) throw new DataNotFoundException("advertisement not found with id: " + id);
+        advertisementRepository.deleteById(id);
 
     }
 
