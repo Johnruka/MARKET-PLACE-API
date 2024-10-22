@@ -33,8 +33,8 @@ public class AdvertisementController {
 
     })
     @PostMapping
-    public ResponseEntity<AdvertisementDTOView> doCreate(@RequestBody @Valid UserDTOForm userDTOForm) {
-        System.out.println("DTO Form: " + userDTOForm);
+    public ResponseEntity<AdvertisementDTOView> doCreate(@RequestBody AdvertisementDTOForm advertisementDTOForm) {
+        System.out.println("DTO Form: " + advertisementDTOForm);
         AdvertisementDTOView responseBody = advertisementService.create(new AdvertisementDTOForm());
         return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
 }
