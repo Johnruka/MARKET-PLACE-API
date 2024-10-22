@@ -3,7 +3,6 @@ package se.lexicon.marketplaceapi.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import se.lexicon.marketplaceapi.Service.AdvertisementService;
 import se.lexicon.marketplaceapi.domain.dto.AdvertisementDTOForm;
 import se.lexicon.marketplaceapi.domain.dto.AdvertisementDTOView;
-import se.lexicon.marketplaceapi.domain.dto.UserDTOForm;
 
 @RequestMapping("/api/v1/advertisements")
 @RestController
