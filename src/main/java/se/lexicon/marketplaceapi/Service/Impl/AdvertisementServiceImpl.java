@@ -117,5 +117,11 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         return null ;
     }
 
+    @Override
+    public AdvertisementDTOView display(AdvertisementDTOForm advertisementDTOForm) {
+        AdvertisementDTOView AdvertisementDTOView = se.lexicon.marketplaceapi.domain.dto.AdvertisementDTOView.builder().build();
+        return AdvertisementDTOView;
+    }
+
 
 }
