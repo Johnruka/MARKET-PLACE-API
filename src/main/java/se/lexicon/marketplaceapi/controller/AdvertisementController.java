@@ -37,13 +37,13 @@ public class AdvertisementController {
         System.out.println("DTO Form: " + advertisementDTOForm);
         AdvertisementDTOView responseBody = advertisementService.create(new AdvertisementDTOForm());
         return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
-}
+    }
 
-@GetMapping
-public ResponseEntity<AdvertisementDTOView> doDisplayAdvertisements(AdvertisementDTOForm advertisementDTOForm){
-    System.out.println("DTO Form: " + advertisementDTOForm);
-    AdvertisementDTOView responseBody = advertisementService.display(new AdvertisementDTOForm());
-    return ResponseEntity.status(HttpStatus.OK).body(responseBody);
+    @GetMapping
+    public ResponseEntity<AdvertisementDTOView> doDisplayAdvertisements(AdvertisementDTOForm advertisementDTOForm) {
+        System.out.println("DTO Form: " + advertisementDTOForm);
+        AdvertisementDTOView responseBody = advertisementService.display(new AdvertisementDTOForm());
+        return ResponseEntity.status(HttpStatus.OK).body(responseBody);
 
-}
+    }
 }
