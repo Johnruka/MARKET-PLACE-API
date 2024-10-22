@@ -19,4 +19,6 @@ public interface AdvertisementService {
     List<Object> findAdvertisementsByPersonId(Long personId);
 
     Object convertToAdvertisementDTOView(Advertisement advertisement);
+
+    AdvertisementDTOView display(AdvertisementDTOForm advertisementDTOForm);
 }
