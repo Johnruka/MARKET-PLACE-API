@@ -3,6 +3,8 @@ package se.lexicon.marketplaceapi.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +40,8 @@ public class AdvertisementController {
     }
 
     @GetMapping
-    public ResponseEntity<AdvertisementDTOView> doDisplayAdvertisements(AdvertisementDTOForm advertisementDTOForm) {
+    public ResponseEntity<AdvertisementDTOView> doDisplayAdvertisements(
+            @RequestParam @NotEmpty @NotNull AdvertisementDTOForm advertisementDTOForm) {
         System.out.println("DTO Form: " + advertisementDTOForm);
         AdvertisementDTOView responseBody = advertisementService.display(new AdvertisementDTOForm());
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
