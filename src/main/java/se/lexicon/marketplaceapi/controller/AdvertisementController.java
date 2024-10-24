@@ -3,6 +3,7 @@ package se.lexicon.marketplaceapi.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class AdvertisementController {
 
     })
     @PostMapping
-    public ResponseEntity<AdvertisementDTOView> doCreate(@RequestBody AdvertisementDTOForm advertisementDTOForm) {
+    public ResponseEntity<AdvertisementDTOView> doCreate(@RequestBody @Valid AdvertisementDTOForm advertisementDTOForm) {
         System.out.println("DTO Form: " + advertisementDTOForm);
         AdvertisementDTOView responseBody = advertisementService.create(new AdvertisementDTOForm());
         return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
