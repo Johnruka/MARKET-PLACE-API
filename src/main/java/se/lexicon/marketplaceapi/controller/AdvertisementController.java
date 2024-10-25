@@ -46,7 +46,6 @@ public class AdvertisementController {
         System.out.println("DTO Form: " + advertisementDTOForm);
         AdvertisementDTOView responseBody = advertisementService.display(new AdvertisementDTOForm());
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
-
     }
 
 }
