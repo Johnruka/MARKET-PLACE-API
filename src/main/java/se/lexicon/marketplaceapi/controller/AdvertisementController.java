@@ -49,10 +49,5 @@ public class AdvertisementController {
 
     }
 
-    @PutMapping("delete")
-    public ResponseEntity<AdvertisementDTOView> doDeleteExpiredAdvertisements(
-            @RequestParam @NotEmpty @NotNull AdvertisementDTOForm advertisementDTOForm) {
-        advertisementService.delete(String.valueOf(AdvertisementDTOForm.builder()));
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
+
 }
