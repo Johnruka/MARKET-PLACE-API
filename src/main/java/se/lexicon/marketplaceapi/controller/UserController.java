@@ -52,13 +52,13 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
     }
 
-    @PutMapping("/disable")
+    @PutMapping("disable")
     public ResponseEntity<Void> doDisableUserByEmail(@RequestParam @NotBlank @Email String email) {
         userService.disableByEmail(email);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @PutMapping("/enable")
+    @PutMapping("enable")
     public ResponseEntity<Void> doEnableUserByEmail(@RequestParam String email) {
         userService.enableByEmail(email);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
