@@ -12,6 +12,7 @@ import se.lexicon.marketplaceapi.domain.dto.PersonDTOView;
 import se.lexicon.marketplaceapi.domain.entity.Advertisement;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -121,6 +122,11 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     public AdvertisementDTOView display(AdvertisementDTOForm advertisementDTOForm) {
         AdvertisementDTOView AdvertisementDTOView = se.lexicon.marketplaceapi.domain.dto.AdvertisementDTOView.builder().build();
         return AdvertisementDTOView;
+    }
+
+    @Override
+    public LocalDateTime getCreateDateTime(AdvertisementDTOForm advertisementDTOForm) {
+        return LocalDateTime.now();
     }
 
 
