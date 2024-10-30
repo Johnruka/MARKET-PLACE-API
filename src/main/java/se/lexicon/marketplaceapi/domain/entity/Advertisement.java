@@ -40,6 +40,7 @@ public class Advertisement {
     @JoinColumn(name = "person_id")
     private Person person;
 
+
     @PrePersist
     public void initialData() {
         createDateTime = LocalDateTime.now();
