@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import se.lexicon.marketplaceapi.Service.AdvertisementService;
 import se.lexicon.marketplaceapi.domain.dto.AdvertisementDTOForm;
 import se.lexicon.marketplaceapi.domain.dto.AdvertisementDTOView;
+import se.lexicon.marketplaceapi.domain.dto.UserDTOForm;
 
 @RequestMapping("/api/v1/advertisements")
 @RestController
@@ -34,8 +35,8 @@ public class AdvertisementController {
 
     })
     @PostMapping
-    public ResponseEntity<AdvertisementDTOView> doCreate(@RequestBody @Valid AdvertisementDTOForm advertisementDTOForm) {
-        System.out.println("DTO Form: " + advertisementDTOForm);
+    public ResponseEntity<AdvertisementDTOView> doCreate(@RequestBody @Valid UserDTOForm userDTOForm) {
+        System.out.println("DTO Form: " + userDTOForm);
         AdvertisementDTOView responseBody = advertisementService.create(new AdvertisementDTOForm());
         return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
     }
